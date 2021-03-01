@@ -1,0 +1,19 @@
+﻿<!-- TODO: make it a reusable directive (don't worry about style) -->
+<div class="pagination">
+    <div>
+        Items per page
+        <select ng-change="changeItemsPerPage()" ng-init="paginationController.pageRow = 10" ng-model="paginationController.pageRow" ng-options="row for row in [10, 20, 30, 'all']"></select> <!-- Should be on Controller? -->
+        <!-- select how many items should be displayed per page -->
+    </div>
+    <div>
+        <button ng-click="firstPage()">&lt;&lt;</button> <!-- 'go to first page' button -->
+        <button ng-click="previousPage()">&lt;</button> <!-- 'go to previous page' button: can't go lower than 1 -->
+        Page
+        <input type="number" value="{{paginationController.page}}" ng-init="paginationController.page=1" ng-model="paginationController.page" ng-change="changePage()"/> <!-- input to select page to go to: go to page when input changes value --> of {{paginationController.nPage}} <!-- number of pages -->
+        <button ng-click="nextPage()">&gt;</button> <!-- 'go to next page' button: can't go higher than last page number -->
+        <button ng-click="lastPage()">&gt;&gt;</button> <!-- 'go to last page' button -->
+    </div>
+    <div style="bottom: 0; text-align: center">
+        <span>{{paginationController.nItem}} items</span> <!-- total number of items -->
+    </div>
+</div>
